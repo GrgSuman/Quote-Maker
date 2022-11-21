@@ -1,0 +1,33 @@
+.grid_{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+.grid_item:hover{
+    transform: scale(1.05);
+    transition: .2s ease-in-out;
+}
+.grid_item:hover > img{
+    opacity: 0.1;
+    transition: .2s ease-in-out;
+}
+.grid_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.grid_item h2{
+    position: absolute;
+    opacity: 0;
+}
+.grid_item:hover > h2{
+    opacity: 1;
+}
+.grid_item img{
+    max-height: 400px;
+    width: 100%;
+    object-fit: contain;
+}

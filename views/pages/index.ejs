@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Maker</title>
+    <link rel="stylesheet" href="../../public/styles/index.css">
+</head>
+<body>
+    <%- include('../partials/base.ejs') %>
+    <%- include('../partials/header.ejs') %>
+    <img src=<%-image%> alt="">
+    <h1>Home Page</h1>
+
+    
+
+    <form action="/api/sendQuote" method="post">
+        <div><textarea id="" name="quote" cols="30" rows="10" placeholder="Enter Quote"></textarea></div>
+        <div><input type="text" name="author" placeholder="Author (optional)"></div>
+        <button>Geeerate</button>
+    </form>
+
+        
+    
+    <div style="display: flex; gap: 1rem;">
+        <canvas id="canvas" style="flex:1 ;"></canvas>
+        <div class="editor" style="flex: 1;">
+            <textarea name="" id="quote" cols="30" rows="10" placeholder="Quote"></textarea>
+            <input type="text" name="" id="author" placeholder="Author">
+            <p>Quote Width</p>
+            <input type="range" value="50" id="quoteWidth" placeholder="Quote Width">
+            <p>Quote X axis</p>
+            <input type="range" value="80" id="quoteX" value="40" placeholder="QuoteX">
+            <p>Quote Y axis</p>
+            <input type="range" value="80" id="quoteY" value="20" placeholder="QuoteY">
+            <p>Quote Font Size</p>
+            <input type="range" min="15" max="50" value="20" id="quoteFontSize"  placeholder="QuoteFontSize">
+        </div>
+    </div>
+
+
+   
+    <script>
+        const canvas = document.getElementById("canvas")
+        const ctx = canvas.getContext('2d')
+        
+        const templateData = {
+            quote:"How to add shadows to your Canvas Elements? In this lesson we learn how to add shadows to our lessons.",
+            quoteColor:"white",
+            quoteFontSize:20,
+            quoteX:40,
+            quoteY:20,
+            quoteWidthinPercent:50,
+        }
+
+
+        const quote = document.getElementById("quote")
+        quote.addEventListener('keyup',(e)=>{
+            templateData['quote']=e.target.value
+            myCanvas()
+        })
+
+        const quoteWidth = document.getElementById("quoteWidth")
+        quoteWidth.addEventListener('change',(e)=>{
+            templateData['quoteWidthinPercent']=e.target.value
+            myCanvas()
+        })
+
+        const quoteX = document.getElementById("quoteX")
+        quoteX.addEventListener('change',(e)=>{
+            templateData['quoteX'] = parseInt(e.target.value)
+            myCanvas()
+        })
+
+        const quoteY = document.getElementById("quoteY")
+        quoteY.addEventListener('change',(e)=>{
+            templateData['quoteY'] = parseInt(e.target.value)
+            myCanvas()
+        })
+
+        const quoteFontSize = document.getElementById("quoteFontSize")
+        quoteFontSize.addEventListener('change',(e)=>{
+            templateData['quoteFontSize'] = parseInt(e.target.value)
+            myCanvas()
+        })
+
+        const myCanvas = ()=>{
+            canvas.height=700
+            canvas.width=630
+            var myImg = new Image();
+            myImg.src = 'https://images.unsplash.com/photo-1542378151504-0361b8ec8f93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
+            myImg.onload = function () {
+                if(myImg.height<canvas.height && myImg.width<canvas.width){
+                canvas.height= myImg.height
+                canvas.width= myImg.width
+                }
+                var ratio = myImg.height / myImg.width;
+                canvas.height = canvas.width * ratio
+                ctx.drawImage(myImg, 0,0, canvas.width, canvas.height); 
+
+                //text 1 properties
+                var maxWidth = templateData.quoteWidthinPercent *0.01 * canvas.width;
+                var lineHeight = templateData.quoteFontSize + 5;
+                var x = templateData.quoteX*0.01*canvas.width;
+                var y = templateData.quoteY*0.01*canvas.height;
+                var text = templateData.quote;
+
+                ctx.font = `normal 600 ${templateData.quoteFontSize}px monospace`;
+                ctx.fillStyle = templateData.quoteColor
+
+                wrapText(ctx, text, x, y, maxWidth, lineHeight);
+            };
+    
+        }
+
+        myCanvas()
+
+        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+            var words = text.split(' ');
+            var line = '';
+        
+            for(var n = 0; n < words.length; n++) {
+            var testLine = line + words[n] + ' ';
+            var metrics = ctx.measureText(testLine);
+            var testWidth = metrics.width;
+            if (testWidth > maxWidth && n > 0) {
+                ctx.fillText(line, x, y);
+                line = words[n] + ' ';
+                y += lineHeight;
+            }
+            else {
+                line = testLine;
+            }
+            }
+            ctx.fillText(line, x, y);
+    }
+    
+     
+    </script>
+</body>
+</html>

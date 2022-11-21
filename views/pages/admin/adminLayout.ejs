@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <%- include('../../partials/base.ejs') %>
+    <link rel="stylesheet" href="../../../public/styles/admin/adminLayout.css">
+
+</head>
+<body>
+
+    <div class="main_">
+        <div class="side_left">
+            <h1 class="logo">Quotes Admin</h1>
+            <p class="title_">Pages</p>
+            <ul class="dash_list">
+                <li class="active_"><a href="/"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+                <li><a href="/"><i class="fa-solid fa-quote-left"></i> <span>Quote Template</span></a></li>
+                <li><a href="/"><i class="fa-solid fa-user"></i> <span>Users</span></a></li>
+                <li><a href="/"><i class="fa-solid fa-rss"></i> <span>Blog</span></a></li>
+                <li><a href="/"><i class="fa-solid fa-envelope-open"></i> <span>Subscribers</span></a></li>
+            </ul>
+        </div>
+        <div class="side_right">
+            <header class="nav_">
+                <div class="menu_"><i class="fa-solid fa-bars"></i></div>
+                <div class="user_items">
+                    <p style="margin-top: 3px;"><i class="fa-solid fa-bell"></i></p>
+                    <p style="display: flex; align-items:center; gap:1rem">
+                        <img src="../../../public/images/user.png" alt="user_image">
+                        <span>Suman Gurung</span>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </p>
+                </div>
+            </header>
+
+            <div class="dropdown_">
+                <ul>
+                    <li><a href="/"><i class="fa-solid fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

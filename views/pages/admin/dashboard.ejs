@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Maker Admin Portal</title>
+    <%- include('../../partials/base.ejs') %>
+    <link rel="stylesheet" href="../../../public/styles/admin/adminSidebar.css">
+    <link rel="stylesheet" href="../../../public/styles/admin/adminNavbar.css">
+
+</head>
+<body>
+    <%- include('./adminLayoutSideBar.ejs') %>
+
+    <div class="admin_wrapper">
+        <%- include('./adminNavbar.ejs') %>
+        <div class="inner_admin">
+            <h1><%- page %></h1>
+        </div>
+    </div>
+</body>
+</html>

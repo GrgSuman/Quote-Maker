@@ -1,0 +1,46 @@
+.side_left{
+    width: 250px;
+    height: 100vh;
+    background-color: #222e3c;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.logo{
+    color: white;
+    font-size: 1.3rem;
+    padding: 0 1.5rem;
+    margin-top: 2rem;
+}
+.title_{
+    color: #ced4da;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    font-size: 0.8rem;
+}
+.dash_list li{
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    margin: 0.5rem 0;
+}
+.active_{
+    background: #25364c;
+    border-left: 3px solid #3b7ddd;
+}
+.active_ a{
+    color: #e9ecef!important;
+}
+.dash_list li a{
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: rgba(233,236,239,.5);
+    width: 100%;
+    display: block;
+}
+.dash_list li:hover > a{
+    color: #e9ecefd7;
+}
+.dash_list i{
+    margin-right: 10px;
+}
