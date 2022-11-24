@@ -8,14 +8,16 @@
     <%- include('../../partials/base.ejs') %>
     <link rel="stylesheet" href="../../../public/styles/admin/adminSidebar.css">
     <link rel="stylesheet" href="../../../public/styles/admin/adminNavbar.css">
-    <!-- <link rel="stylesheet" href="../../../public/styles/admin/quoteTemplate.css"> -->
+    <link rel="stylesheet" href="../../../public/styles/admin/quoteTemplateAdd.css">
     <link rel="stylesheet" href="../../../public/styles/admin/adminCommon.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
     <%- include('./adminLayoutSideBar.ejs') %>
 
-    <div class="admin_wrapper">
+    <div class="admin_wrapper admin_half">
         <%- include('./adminNavbar.ejs') %>
         <div class="inner_admin">
 
@@ -24,65 +26,412 @@
                 <button onclick="takeAway('/admin/manage-quote-templates')"> Back <i style="margin-left: 5px;" class="fa-solid fa-arrow-left"></i></button>
             </div>
 
-            <form action="" method="" class="form_">
-
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
+            <div class="editor_">
+                <div class="viewer_">
+                    <canvas id="canvas" style="display: none ;"></canvas>
+                    <img id="result_" src="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80" alt="">
                 </div>
 
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
+                <form action="" method="" class="form_">
 
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
+                    <h2 style="margin-bottom:1rem ;">Canvas Details</h2>
 
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="height">Canvas Height</label>
+                            <input type="number" id="height" value="700" name="height">
+                        </div>
+    
+                        <div class="field">
+                            <label for="width">Canvas Width</label>
+                            <input type="number" id="width" value="630" name="width">
+                        </div>
+                    </div>
 
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="bgColor">Background Color (rgb/color-name)</label>
+                            <input type="text" id="bgColor" value="black" name="bgColor">
+                        </div>
+    
+                        <div class="field">
+                            <label for="bgImage">Background Image Link</label>
+                            <input type="text" id="bgImage" value="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1190&q=80" name="bgImage">
+                        </div>
+                    </div>
 
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
+                    <div class="flexer">
+                        <div class="field field-checkbox">
+                            <label for="useBGImage" style="margin-top: 1rem;">
+                              <input type="checkbox" id="useBGImage" checked name="useBGImage"> <span style="margin-top: 5px;">Use Background Image</span>
+                            </label>
+                        </div>
+    
+                        <div class="field">
+                            <label for="">Image Fit</label>
+                            <select id="imageFit">
+                                <option value="autoAdjust">Auto</option>
+                                <option value="canvasAsImageSize">Canvas as Image Size</option>
+                                <option value="ImageAsCanvasSize">Image as Canvas Size</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <h2 style="margin-bottom:1rem ; margin-top: 2rem;">Quote Details</h2>
 
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
-                
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="quote">Quote</label>
+                            <input type="text" id="quote" name="quote">
+                        </div>
+    
+                        <div class="field">
+                            <label for="quoteFontColor">Font Color (rgb/color-name)</label>
+                            <input type="text" value="white" id="quoteFontColor" name="quoteFontColor">
+                        </div>
+                    </div>
 
-                <div class="field">
-                    <label for="quote">Quote</label>
-                    <input type="quote" id="quote" name="quote">
-                </div>
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="quoteFontSize">Font Size</label>
+                            <input type="number" value="30" id="quoteFontSize" name="quoteFontSize">
+                        </div>
+    
+                        <div class="field">
+                            <label for="">Font Family</label>
+                            <select id="quoteFontFamily">
+                                
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="field field-checkbox">
-                    <label for="checkbox">
-                      <input type="checkbox" id="checkbox" name="checkbox"> <span style="margin-top: 5px;">Stay signed in for a week</span>
-                    </label>
-                </div>
+                    <div class="flexer">
+                        <!-- <div class="field">
+                            <label for="quoteFontSize">Font Size</label>
+                            <input type="number" value="30" id="quoteFontSize" name="quoteFontSize">
+                        </div> -->
+    
+                        <div class="field">
+                            <label for="quoteWidth">Width</label>
+                            <input type="range" value="50" id="quoteWidth" name="quoteWidth" min="0" max="100">
+                        </div>
+                    </div>
 
-                <div class="field">
-                    <input type="submit" name="submit" value="Save">
-                </div>
-            </form>
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="quoteX">X Position</label>
+                            <input type="range" id="quoteX" value="10" name="quoteX" min="0" max="100">
+                        </div>
+    
+                        <div class="field">
+                            <label for="quoteY">Y Position</label>
+                            <input type="range" id="quoteY" value="20" name="quoteY" min="0" max="100">
+                        </div>
+                    </div>
 
+                    <h2 style="margin-bottom:1rem ; margin-top: 2rem;">Author Details</h2>
+
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="author">Author Name (optional)</label>
+                            <input type="text" id="author" name="author">
+                        </div>
+    
+                        <div class="field">
+                            <label for="authorFontColor">Font Color (rgb/color-name)</label>
+                            <input type="text" value="white" id="authorFontColor" name="authorFontColor">
+                        </div>
+                    </div>
+
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="authorFontSize">Font Size</label>
+                            <input type="number" value="20" id="authorFontSize" name="authorFontSize">
+                        </div>
+
+                        <div class="field">
+                            <label for="">Font Family</label>
+                            <select id="authorFontFamily">
+                                
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="authorWidth">Width</label>
+                            <input type="range" value="50" id="authorWidth" name="authorWidth" min="0" max="100">
+                        </div>
+                    </div>
+
+                    <div class="flexer">
+                        <div class="field">
+                            <label for="authorX">X Position</label>
+                            <input type="range" value="60" id="authorX" name="authorX" min="0" max="100">
+                        </div>
+    
+                        <div class="field">
+                            <label for="authorY">Y Position</label>
+                            <input type="range" value="80" id="authorY" name="authorY" min="0" max="100">
+                        </div>
+                    </div>
+                    
+
+                    <div class="field flexer">
+                        <p id="view_"><span>View</span> <i class="fa-regular fa-eye"></i></p>
+                        <input type="submit" name="submit" value="Create New Template">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
+    <script>
+        //canvas properties
+        const canvasHeight = document.getElementById("height")
+        const canvasWidth = document.getElementById("width")
+        const canvasBGColor = document.getElementById("bgColor")
+        const canvasBGImageUrl = document.getElementById("bgImage")
+        const useBGImage = document.getElementById("useBGImage")
+        const imageFit = document.getElementById("imageFit")
+
+        canvasHeight.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        canvasWidth.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        canvasBGColor.addEventListener("keyup",()=>canvasImageData(inputTemplateDetails()))
+        canvasBGImageUrl.addEventListener("keyup",()=>canvasImageData(inputTemplateDetails()))
+        useBGImage.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        imageFit.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+
+        //quote properties
+        const quote = document.getElementById("quote")
+        const quoteFontColor = document.getElementById("quoteFontColor")
+        const quoteFontFamily = document.getElementById("quoteFontFamily")
+        const quoteFontSize = document.getElementById("quoteFontSize")
+        const quoteWidth = document.getElementById("quoteWidth")
+        const quoteX = document.getElementById("quoteX")
+        const quoteY = document.getElementById("quoteY")
+
+        quote.addEventListener("keyup",()=>canvasImageData(inputTemplateDetails()))
+        quoteFontColor.addEventListener("keyup",()=>canvasImageData(inputTemplateDetails()))
+        quoteFontFamily.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        quoteFontSize.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        quoteWidth.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        quoteX.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        quoteY.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+
+        //author properties
+        const author = document.getElementById("author")
+        const authorFontColor = document.getElementById("authorFontColor")
+        const authorFontFamily = document.getElementById("authorFontFamily")
+        const authorFontSize = document.getElementById("authorFontSize")
+        const authorWidth = document.getElementById("authorWidth")
+        const authorX = document.getElementById("authorX")
+        const authorY = document.getElementById("authorY")
+
+        author.addEventListener("keyup",()=>canvasImageData(inputTemplateDetails()))
+        authorFontColor.addEventListener("keyup",()=>canvasImageData(inputTemplateDetails()))
+        authorFontFamily.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        authorFontSize.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        authorWidth.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        authorX.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+        authorY.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
+
+
+        //loading fonts
+        const fonts = "<%= fonts %>"
+        let fontsArray = fonts.split(',');
+        const fontsForUse = fontsArray.map((x)=>{
+            return x.replace(/\.[^\/.]+$/, '')
+        })
+        fontsArray.forEach((x)=>{
+            const option = document.createElement("option")
+            option.value=x.replace(/\.[^\/.]+$/, '')
+            option.innerHTML=x.replace(/\.[^\/.]+$/, '')
+            option.style.fontFamily=x.replace(/\.[^\/.]+$/, '')
+            quoteFontFamily.appendChild(option)
+        })
+
+        fontsArray.forEach((x)=>{
+            const option = document.createElement("option")
+            option.value=x.replace(/\.[^\/.]+$/, '')
+            option.innerHTML=x.replace(/\.[^\/.]+$/, '')
+            option.style.fontFamily=x.replace(/\.[^\/.]+$/, '')
+            authorFontFamily.appendChild(option)
+        })
+        fontsArray.forEach((value,index)=>{
+            let x = new FontFace(fontsForUse[index], `url(../.././public/fonts/${value})`);
+            x.load().then((font) => {
+            document.fonts.add(font);
+        });
+        })
+
+        const view_ = document.getElementById("view_")
+
+        view_.addEventListener("click",()=>{
+            getImageDetails(inputTemplateDetails())
+        })
+
+        const getImageDetails=async(details)=>{
+            const res = await fetch("http://localhost:8000/api/getImageData",{
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:JSON.stringify({})
+            })
+            const data = await res.json()
+            console.log(data)
+            document.getElementById("result_").src=data.imageData
+        }
+
+
+        
+
+
+        const canvasImageData = (data)=>{
+
+            const canvas = document.getElementById("canvas")
+            const ctx = canvas.getContext('2d')
+
+            canvas.height = data.canvasDetails.height
+            canvas.width = data.canvasDetails.width
+
+            ctx.fillStyle = data.canvasDetails.bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if(data.canvasDetails.useBGForImage){
+
+                let myimg = new Image();
+                myimg.crossOrigin = 'Anonymous'
+                myimg.src = data.canvasDetails.bgImageURL
+
+                myimg.onload = function () {
+
+                if(data.canvasDetails.imageFit=="autoAdjust"){
+                    if(myimg.height<canvas.height && myimg.width<canvas.width){
+                        canvas.height= myimg.height
+                        canvas.width= myimg.width
+                    }
+                    var ratio = myimg.height / myimg.width;
+                    canvas.height = canvas.width * ratio
+                    ctx.drawImage(myimg, 0,0, canvas.width, canvas.height); 
+                }
+
+                if(data.canvasDetails.imageFit=="canvasAsImageSize"){
+                    canvas.height= myimg.height
+                    canvas.width= myimg.width
+                    ctx.drawImage(myimg, 0,0, canvas.width, canvas.height); 
+                }
+
+                if(data.canvasDetails.imageFit=="ImageAsCanvasSize"){
+                    ctx.drawImage(myimg, 0, 0, myimg.width, myimg.height, 0, 0, canvas.width, canvas.height);
+                }
+
+                //text 1 properties
+                var maxWidthQ = data.quoteDetails.quoteWidth * 0.01 * canvas.width;
+                var lineHeightQ = data.quoteDetails.quoteFontSize + 5;
+                var xQ = data.quoteDetails.quoteXPosition*0.01*canvas.width;
+                var yQ = data.quoteDetails.quoteYPosition*0.01*canvas.height;
+                var textQ = data.quoteDetails.quote;
+                ctx.font = `${data.quoteDetails.quoteFontSize}px ${data.quoteDetails.quoteFontFamily}`;
+                ctx.fillStyle = data.quoteDetails.quoteColor
+
+                wrapText(ctx, textQ, xQ, yQ, maxWidthQ, lineHeightQ);
+
+                //text 2 properties
+                var maxWidth = data.authorDetails.authorWidth *0.01 * canvas.width;
+                var lineHeight = data.authorDetails.authorFontSize + 5;
+                var x = data.authorDetails.authorXPosition*0.01*canvas.width;
+                var y = data.authorDetails.authorYPosition*0.01*canvas.height;
+                var text = data.authorDetails.author;
+                ctx.font = `${data.authorDetails.authorFontSize}px ${data.authorDetails.authorFontFamily}`;
+                ctx.fillStyle = data.authorDetails.authorColor
+
+                wrapText(ctx, text, x, y, maxWidth, lineHeight);
+
+                document.getElementById("result_").src = canvas.toDataURL('image/png');
+
+
+            }
+        }
+        else{
+                //text 1 properties
+                var maxWidthQ = data.quoteDetails.quoteWidth * 0.01 * canvas.width;
+                var lineHeightQ = data.quoteDetails.quoteFontSize + 5;
+                var xQ = data.quoteDetails.quoteXPosition*0.01*canvas.width;
+                var yQ = data.quoteDetails.quoteYPosition*0.01*canvas.height;
+                var textQ = data.quoteDetails.quote;
+                ctx.font = `${data.quoteDetails.quoteFontSize}px ${data.quoteDetails.quoteFontFamily}`;
+                ctx.fillStyle = data.quoteDetails.quoteColor
+
+                wrapText(ctx, textQ, xQ, yQ, maxWidthQ, lineHeightQ);
+
+                //text 2 properties
+                var maxWidth = data.authorDetails.authorWidth *0.01 * canvas.width;
+                var lineHeight = data.authorDetails.authorFontSize + 5;
+                var x = data.authorDetails.authorXPosition*0.01*canvas.width;
+                var y = data.authorDetails.authorYPosition*0.01*canvas.height;
+                var text = data.authorDetails.author;
+                ctx.font = `${data.authorDetails.authorFontSize}px ${data.authorDetails.authorFontFamily}`;
+                ctx.fillStyle = data.authorDetails.authorColor
+
+                wrapText(ctx, text, x, y, maxWidth, lineHeight);
+
+                document.getElementById("result_").src = canvas.toDataURL('image/png');
+
+        }
+
+        }
+
+        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+        var words = text.split(' ');
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+        var testLine = line + words[n] + ' ';
+        var metrics = ctx.measureText(testLine);
+        var testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
+            ctx.fillText(line, x, y);
+            line = words[n] + ' ';
+            y += lineHeight;
+        }
+        else {
+            line = testLine;
+        }
+        }
+        ctx.fillText(line, x, y);
+    }
+
+
+    const inputTemplateDetails=()=>{
+            return {
+                    canvasDetails:{
+                    height:parseInt(canvasHeight.value),
+                    width:parseInt(canvasWidth.value),
+                    bgColor:canvasBGColor.value,
+                    bgImageURL:canvasBGImageUrl.value,
+                    useBGForImage:useBGImage.checked,
+                    imageFit:imageFit.value
+                },
+                quoteDetails:{
+                    quote:quote.value,
+                    quoteColor:quoteFontColor.value,
+                    quoteFontFamily:quoteFontFamily.value,
+                    quoteFontSize:parseInt(quoteFontSize.value),
+                    quoteXPosition:parseInt(quoteX.value),
+                    quoteYPosition:parseInt(quoteY.value),
+                    quoteWidth:parseInt(quoteWidth.value)
+                },
+                authorDetails:{
+                    author:author.value,
+                    authorColor:authorFontColor.value,
+                    authorFontFamily:authorFontFamily.value,
+                    authorFontSize:parseInt(authorFontSize.value),
+                    authorXPosition:parseInt(authorX.value),
+                    authorYPosition:parseInt(authorY.value),
+                    authorWidth:parseInt(authorWidth.value)
+                }
+            }
+    }
+    </script>
 </body>
 </html>

@@ -15,12 +15,3 @@ h1,h2,h3,h4,h5,h6{
     margin: 0;
 }
 
-.admin_wrapper{
-    min-height: 100vh;
-    background-color: #f5f7fb;
-    margin-left: 250px;
-    position: relative;
-}
-.inner_admin{
-    padding: 1rem 3%;
-}

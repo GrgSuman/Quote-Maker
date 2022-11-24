@@ -1,3 +1,4 @@
+const {getFontsList} = require("../../../utils/getFonts")
 
 const dashboard = (req,res)=>{
     const data={
@@ -13,9 +14,10 @@ const quoteTemplates = (req,res)=>{
     res.render("pages/admin/quoteTemplate.ejs",data)
 }
 
-const quoteTemplateAdd = (req,res)=>{
+const quoteTemplateAdd = async(req,res)=>{
     const data={
-        "page":"quoteTemplates"
+        "page":"quoteTemplates",
+        "fonts": await getFontsList()
     }
     res.render("pages/admin/quoteTemplateAdd.ejs",data)
 }

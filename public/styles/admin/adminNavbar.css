@@ -6,6 +6,14 @@
     background-color: white;
     height: 60px;
 }
+.menu_{
+    padding: 0.4rem 0.7rem;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.menu_:active{
+    background-color: aquamarine;
+}
 .user_items{
     display: flex;
     align-items: center;

@@ -1,3 +1,17 @@
+.admin_wrapper{
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  position: relative;
+  transition: .3s ease-in-out;
+}
+.admin_half{
+  margin-left: 250px;
+  transition: .3s ease-in-out;
+}
+.inner_admin{
+  padding: 1rem 3%;
+}
+
 .top_{
     display: flex;
     justify-content: space-between;
@@ -75,11 +89,11 @@
 
 
   /* form */
-  .form_{
-    margin: 2rem 0;
+  .field{
+    margin: 0.5rem 0;
+    flex: 1;
   }
-
-  .field input {
+  .field input,.field select {
     font-size: 16px;
     padding: 8px 16px;
     width: 100%;
@@ -96,6 +110,9 @@
                 rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                 rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                 rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+.field input[type="range"]{
+  box-shadow: none;
 }
 
 .field input[type="submit"] {
@@ -116,12 +133,28 @@
 .field-checkbox input {
     width: 20px;
     height: 15px;
-    margin-right: 5px; 
+    margin-right: 10px; 
     box-shadow: unset;
-    min-height: unset;
 }
 .field-checkbox label {
     display: flex;
     align-items: center;
     margin: 0;
+}
+.field p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  width: 100px;
+  background: gray;
+  color: white;
+  margin-top: 5px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.field p i{
+  margin-left: 10px;
 }

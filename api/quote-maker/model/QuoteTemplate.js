@@ -23,6 +23,10 @@ const QuoteTemplateSchema = mongoose.Schema({
             type:String,
             default:"white"
         },
+        quoteFontFamily: {
+            type:String,
+            default:"white"
+        },
         quoteFontSize:{
             type:Number,
             default:25
@@ -46,17 +50,21 @@ const QuoteTemplateSchema = mongoose.Schema({
             type:String,
             default:"white"
         },
+        authorFontFamily: {
+            type:String,
+            default:"white"
+        },
         authorFontSize:{
             type:Number,
-            default:25
+            default:20
         },
         authorXPosition:{
             type:Number,
-            default:10
+            default:60
         },
         authorYPosition:{
             type:Number,
-            default:20
+            default:80
         },
         authorWidth:{
             type:Number,
