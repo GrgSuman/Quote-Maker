@@ -26,3 +26,15 @@
     gap: 1rem;
     align-items: center;
 }
+.msg_update{
+    background: antiquewhite;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.msg_delete{
+    background-color: gainsboro;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}

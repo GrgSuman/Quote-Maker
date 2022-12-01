@@ -22,6 +22,7 @@
 .grid_item h2{
     position: absolute;
     opacity: 0;
+    z-index: -1;
 }
 .grid_item:hover > h2{
     opacity: 1;

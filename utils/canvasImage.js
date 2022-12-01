@@ -7,8 +7,8 @@ const {getFontsList} = require("./getFonts")
 //         width:630,
 //         bgColor:"black",
 //         bgImageURL:"https://images.unsplash.com/photo-1542378151504-0361b8ec8f93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-//         useBGForImage:true,
-//         imageFit:"autoAdjust"
+//         useImageForBG:true,
+//         imageFit:"ImageAsCanvasSize"
 //     },
 //     quoteDetails:{
 //         quote:"How to add shadows to your Canvas Elements? In this lesson we learn how to add shadows to our lessons.",
@@ -44,7 +44,7 @@ const canvasImageData = async(data)=>{
     ctx.fillStyle = data.canvasDetails.bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    if(data.canvasDetails.useBGForImage){
+    if(data.canvasDetails.useImageForBG){
         const myimg = await loadImage(data.canvasDetails.bgImageURL)
 
         if(data.canvasDetails.imageFit=="autoAdjust"){

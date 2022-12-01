@@ -175,9 +175,15 @@
                             <input type="range" value="80" id="authorY" name="authorY" min="0" max="100">
                         </div>
                     </div>
-                    
+
+                    <h2 style="margin-bottom:1rem ; margin-top: 2rem;">Template Details</h2>
 
                     <div class="field flexer">
+                        <label for="featuredImage">Featured Image</label>
+                        <input type="file" name="img" id="featuredImage">
+                    </div>
+
+                    <div class="field flexer" style="margin-top: 2rem;">
                         <p id="view_"><span>View</span> <i class="fa-regular fa-eye"></i></p>
                         <input type="submit" name="submit" value="Create New Template">
                     </div>
@@ -236,6 +242,8 @@
         authorX.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
         authorY.addEventListener("change",()=>canvasImageData(inputTemplateDetails()))
 
+        //template details
+        const featuredImage = document.getElementById("featuredImage")
 
         //loading fonts
         const fonts = "<%= fonts %>"
@@ -266,25 +274,45 @@
         })
 
         const view_ = document.getElementById("view_")
+        const form_ = document.querySelector(".form_")
+
+        form_.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            startLoading()
+            postTemplateDetails(inputTemplateDetails())
+        })
+
+        
 
         view_.addEventListener("click",()=>{
             getImageDetails(inputTemplateDetails())
         })
 
-        const getImageDetails=async(details)=>{
-            const res = await fetch("http://localhost:8000/api/getImageData",{
+        const postTemplateDetails=async(details)=>{
+            let formData = new FormData(); 
+            formData.append("featuredImage", featuredImage.files[0]);
+            formData.append("imgData",JSON.stringify(details))
+            const res = await fetch("http://localhost:8000/templates/",{
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body:JSON.stringify({})
+                body:formData
             })
             const data = await res.json()
-            console.log(data)
+            stopLoading()
+            window.location.href="/admin/manage-quote-templates"
+        }
+
+        const getImageDetails=async(details)=>{
+            const res = await fetch("http://localhost:8000/quote/getImageData",{
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:JSON.stringify(details)
+            })
+            const data = await res.json()
             document.getElementById("result_").src=data.imageData
         }
 
 
-        
-
+    
 
         const canvasImageData = (data)=>{
 
@@ -297,7 +325,7 @@
             ctx.fillStyle = data.canvasDetails.bgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            if(data.canvasDetails.useBGForImage){
+            if(data.canvasDetails.useImageForBG){
 
                 let myimg = new Image();
                 myimg.crossOrigin = 'Anonymous'
@@ -348,8 +376,6 @@
                 wrapText(ctx, text, x, y, maxWidth, lineHeight);
 
                 document.getElementById("result_").src = canvas.toDataURL('image/png');
-
-
             }
         }
         else{
@@ -376,7 +402,6 @@
                 wrapText(ctx, text, x, y, maxWidth, lineHeight);
 
                 document.getElementById("result_").src = canvas.toDataURL('image/png');
-
         }
 
         }
@@ -409,7 +434,7 @@
                     width:parseInt(canvasWidth.value),
                     bgColor:canvasBGColor.value,
                     bgImageURL:canvasBGImageUrl.value,
-                    useBGForImage:useBGImage.checked,
+                    useImageForBG:useBGImage.checked,
                     imageFit:imageFit.value
                 },
                 quoteDetails:{
@@ -429,6 +454,9 @@
                     authorXPosition:parseInt(authorX.value),
                     authorYPosition:parseInt(authorY.value),
                     authorWidth:parseInt(authorWidth.value)
+                },
+                templateDetails:{
+                    featuredImage:""
                 }
             }
     }

@@ -6,7 +6,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:true}))
 app.use(cors())
 
 app.set('view engine','ejs');
@@ -19,21 +19,20 @@ const {errorHandler} = require("./middleware/errorHandler.js")
 const authRoutes = require('./api/auth/routes/authRoutes.js')
 const adminRoutes = require('./api/auth/routes/adminRoutes.js')
 const quoteMakerRoutes = require("./api/quote-maker/routes/quoteMakerRoutes")
+const quoteTemplate = require("./api/quote-maker/routes/quoteTemplateRoute")
 
 //implementing routes
 //auth
-app.use('/api/user',authRoutes)
+app.use('/user',authRoutes)
 
 //admin
 app.use('/admin',adminRoutes)
 
 //quote Maker
-app.use('/api',quoteMakerRoutes)
+app.use('/quote',quoteMakerRoutes)
 
-app.get('/login/admin')
-
-const {canvasImageData} = require("./utils/canvasImage");
-const { createImageData } = require('canvas');
+//quote template
+app.use('/templates',quoteTemplate)
 
 
 //index page

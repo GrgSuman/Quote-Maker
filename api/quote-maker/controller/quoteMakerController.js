@@ -1,21 +1,28 @@
 const {canvasImageData} = require("../../../utils/canvasImage")
+const {QuoteTemplate} = require("../model/QuoteTemplate")
 
-const listTemplates = (req,res)=>{
-    res.json({"data":"all templates"})
-}
 
-const getQuote = (req,res)=>{
-    console.log(req.body)
-    const{quote,author} = req.body;
-    if(!quote){
-        throw new Error("Quote is required")
-    }
+//@desc Returns quote template with user entered quote and author for specific id of template
+//@GET quote/quote-maker/:id?q="dsas"&a="asd"
+//@access public 
+const singleQuoteMaker = async(req,res)=>{
+
+    const quoteTemplates = await QuoteTemplate.find().limit(10)
+
     const data={
-        quote,author
+        "quote":"suman 123 ",
+        "author":"",
+        "showImage":"imgData",
+        "templates":[],
+        "templates":quoteTemplates,
     }
-    res.json({"suman":"asd"})
+    res.render("pages/quoteMaker.ejs",data)
 }
 
+
+//@desc Dynamic quote generation based on imageData
+//@GET quote/getImageData
+//@access public 
 const canvasImage = async(req,res)=>{
     const imgData = await canvasImageData(req.body)
     const data={
@@ -26,7 +33,6 @@ const canvasImage = async(req,res)=>{
 }
 
 module.exports={
-    listTemplates,
-    getQuote,
-    canvasImage
+    canvasImage,
+    singleQuoteMaker
 }

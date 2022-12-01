@@ -21,36 +21,31 @@
         <div class="inner_admin">
 
             <div class="top_">
-                <h2>Quote Templates</h2>
+                <h2>Quote Templates <%if (locals.name) { %>
+                    suman grg
+                    <% } %>
+                </h2>
                 <button onclick="takeAway('/admin/manage-quote-templates/add')">Add Template <i class="fa-solid fa-plus"></i></button>
             </div>
 
 
             <div class="grid_">
-                <div class="grid_item">
-                    <img src="https://images.unsplash.com/photo-1552508744-1696d4464960?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="template view">
-                    <h2>View Details</h2>
-                </div>
-
-                <div class="grid_item">
-                    <img src="https://images.unsplash.com/photo-1577640256262-8488aa247e17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="template view">
-                    <h2>View Details</h2>
-                </div>
-
-                <div class="grid_item">
-                    <img src="https://images.unsplash.com/photo-1545264835-3e14e4dae383?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=473&q=80" alt="template view">
-                    <h2>View Details</h2>
-                </div>
-
-                <div class="grid_item">
-                    <img src="https://images.unsplash.com/photo-1537444532052-2afbf769b76c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="template view">
-                    <h2>View Details</h2>
-                </div>
+                <% templates.forEach((template)=> { %>
+                    <div class="grid_item">
+                        <img data-id="<%= template._id %>" class="others_" src="/public/uploads/<%= template.templateDetails.featuredImage %>" alt="template view">
+                        <h2>View Details</h2>
+                    </div>
+                <% }) %>
             </div>
-
-            
-
         </div>
     </div>
+    <script>
+        const templates =  document.querySelectorAll(".grid_item img")
+        templates.forEach((x)=>{
+            x.addEventListener("click",()=>{
+                window.location.href = "/admin/manage-quote-templates/"+ x.getAttribute("data-id")
+            })
+        })
+    </script>
 </body>
 </html>

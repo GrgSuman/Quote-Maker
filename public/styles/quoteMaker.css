@@ -1,0 +1,46 @@
+.outer_{
+    margin: 3rem 25%;
+}
+
+.quote_{
+    margin: 1rem 0;
+}
+.quote_ p{
+    font-size: 1.6rem;
+    font-style: italic;
+    text-align: center;
+}
+.quote_ .author{
+    font-size: 1.3rem;
+    font-style: normal;
+}
+.author{
+    margin-top: 1rem;
+}
+.show_{
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.more img:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}
+.show_ img{
+    object-fit: contain;
+    width: 80%;
+}
+
+.download_{
+    background: #3b7ddd;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem 0;
+    width: 100%;
+    padding: 0.6rem;
+    font-weight: 500;
+}

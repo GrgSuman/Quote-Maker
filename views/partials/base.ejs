@@ -9,8 +9,21 @@
 <!-- css  -->
 <link rel="stylesheet" href="../../../public/styles/base.css">
 
+<div class="loader_">
+    Preparing Best For You
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
 <script>
     function takeAway(location){
         window.location.href=location
+    }
+
+    const startLoading=()=>{
+        document.querySelector(".loader_").classList.add("loading_on")
+    }
+
+    const stopLoading=()=>{
+        document.querySelector(".loader_").classList.remove("loading_on")
     }
 </script>

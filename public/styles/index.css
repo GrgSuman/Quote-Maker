@@ -1,0 +1,100 @@
+.form_{
+    display: flex;
+    justify-content: center;
+    padding: 3rem 10%;
+    height: calc(100vh - 3rem);
+    background-color: #f8f8f8;
+    /* background: url(../images/wintery-sunburst.png); */
+    background: url(../images/dragon-scales.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.form_ form{
+    width: 50%;
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+}
+
+.form_ input,.form_ textarea, .form_ button{
+    font-size: 20px;
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 44px;
+    margin-top: 5px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 );
+    border:1px solid rgb(84 105 212 / 0.5);
+}
+.form_ input{
+    margin: 1rem 0;
+}
+.form_ button {
+    background-color: royalblue;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+.form_ button:active{
+    transform: scale(0.9);
+    transition: 0.3s ease-in-out;
+}
+.top___{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.top___ p{
+    background-color: #f9ecec;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.top___ p:active{
+    transform: translateY(5px);
+}
+.contents{
+    padding: 3rem 25%;
+}
+.main_{
+    margin: 1rem 0;
+}
+.qna h2{
+    margin: 1rem 0;
+    margin-top: 3rem;
+    position: relative;
+}
+.qna h2::after{
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 5%;
+    height: 5px;
+    background-color:#e8ff00;
+    content: "";
+    border-radius: 5px;
+}
+.qna p{
+    line-height: 1.6em;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 18px;
+    margin-top: 2rem;
+}
+.qna ul{
+    margin-top: 2rem;
+}
+.qna ul li{
+    line-height: 1.6em;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 18px;
+    margin: 0.5rem 0;
+    margin-left: 1.5rem;
+}
+.how_to li{
+    list-style: auto;
+}

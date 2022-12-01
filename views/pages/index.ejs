@@ -10,13 +10,80 @@
 <body>
     <%- include('../partials/base.ejs') %>
     <%- include('../partials/header.ejs') %>
-    <h1>Home Page</h1>
-    
-    <form action="/api/sendQuote" method="post">
-        <div><textarea id="" name="quote" cols="30" rows="10" placeholder="Enter Quote"></textarea></div>
-        <div><input type="text" name="author" placeholder="Author (optional)"></div>
-        <button>Geeerate</button>
-    </form>
 
+    <div class="form_">
+        <form action="" method="">
+            <div class="top___">
+                <h2>Quote Maker Tool</h2>
+                <p>Try Random Quote <i class="fa-solid fa-shuffle"></i></p>
+            </div>
+            <div><textarea autofocus required id="quote" name="quote" cols="30" rows="10" placeholder="Enter Quote"></textarea></div>
+            <div><input  type="text" name="author" id="author" placeholder="Author (optional)"></div>
+            <button>Generate <i class="fa-solid fa-arrows-rotate"></i></button>
+        </form>
+    </div>
+
+    <div class="contents">
+        <!-- <h1 class="main_">Quote maker / quote generator online tool</h1> -->
+
+        <div class="qna">
+            <h2>What is Quote Maker / Quote Generator?</h2>
+            <p>
+               <b>Quote maker</b>  or <b>quote generator</b>  is a online tool for generating quotes with image as background.
+                It has a lots of templates to use. This tool is free to use.
+            </p>
+        </div>
+
+        <div class="qna">
+            <h2>How to use Quote Maker?</h2>
+            <p>Unlike other tools where you need to edit yourself setting the accurate font size, images color adjustments and all.
+               Quote maker is easy to use for all kinds of person. You can follow below steps to create your quote with background image after you land to quotemaker.com.
+            </p>
+            <ul class="how_to">
+                <li></li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+            </ul>
+        </div>
+
+        <div class="qna">
+            <h2>Features of Quote Maker?</h2>
+            <ul>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+                <li>Quote maker or quote generator is a online</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+<script>
+    var quoteData = JSON.parse(window.localStorage.getItem("quoteData"))
+    if(!quoteData){
+        const quoteData = {
+            quote:'"If you are not willing to risk the usual, you will have to settle for the ordinary."',
+            author:"- Jim Rohn"  
+        }
+        window.localStorage.setItem("quoteData",JSON.stringify(quoteData))
+    }
+    const form = document.querySelector(".form_ form")
+    const quote = document.getElementById("quote")
+    const author = document.getElementById("author")
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        if(quote.value!==""){
+            window.localStorage.setItem("quote",quote.value)
+            window.localStorage.setItem("author",author.value)
+            window.location.href="/quote/quote-maker"
+        }
+    })
+</script>    
 </body>
 </html>

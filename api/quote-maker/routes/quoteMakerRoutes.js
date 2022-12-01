@@ -1,10 +1,9 @@
 const express = require('express')
-const {listTemplates,getQuote,canvasImage} = require("../controller/quoteMakerController")
+const {canvasImage,singleQuoteMaker} = require("../controller/quoteMakerController")
 
 const router = express.Router()
 
-
-router.post("/sendQuote",getQuote)
+router.get("/quote-maker/",singleQuoteMaker)
 router.post("/getImageData",canvasImage)
 
 module.exports=router
