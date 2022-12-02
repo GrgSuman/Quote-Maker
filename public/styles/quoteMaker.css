@@ -1,5 +1,5 @@
 .outer_{
-    margin: 3rem 25%;
+    margin: 3rem 20%;
 }
 
 .quote_{
@@ -9,6 +9,7 @@
     font-size: 1.6rem;
     font-style: italic;
     text-align: center;
+    color: #1e1e1ecc;
 }
 .quote_ .author{
     font-size: 1.3rem;
@@ -29,7 +30,7 @@
 }
 .show_ img{
     object-fit: contain;
-    width: 80%;
+    width: 60%;
 }
 
 .download_{
@@ -43,4 +44,32 @@
     width: 100%;
     padding: 0.6rem;
     font-weight: 500;
+    font-size: 18px;
+}
+
+@media (max-width:992px) {
+    .outer_ {
+        margin: 1rem 10%;
+    }
+}
+
+@media (max-width:768px) {
+    .show_ img {
+        width: 80%;
+    }
+    .quote_ p {
+        font-size: 1.3rem;
+    }
+    .quote_ .author {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) { 
+    .outer_ {
+        margin: 1rem 5%;
+    }
+    .show_ img {
+        width: 100%;
+    }
 }

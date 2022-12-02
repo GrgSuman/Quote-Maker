@@ -2,11 +2,26 @@
     <nav>
         <a href="/" class="logo"> Quote <span>Maker</span> </a>
         <ul>
-           <li><a href="/">trending</a></li> 
-           <li><a href="/">quotes</a></li> 
-           <li><a href="/">gallery</a></li> 
-           <!-- <li><a class="join_" href="/">create <i class="fa-solid fa-plus"></i></a></li> -->
-           <li><a class="join_" href="/">join <i class="fa-regular fa-user"></i></a></li>
+           <li class="big_menu"><a href="/">trending</a></li> 
+           <li class="big_menu"><a href="/">quotes</a></li> 
+           <li class="big_menu"><a href="/">gallery</a></li> 
+           <li class="menu_"><img src="/public/images/menu-bar.png" alt=""></li>
+           <li class="big_menu"><a class="join_" href="/">join <i class="fa-regular fa-user"></i></a></li>
         </ul>
     </nav>
+    <ul class="mobile_menu">
+        <li><a href="/">trending</a></li> 
+        <li><a href="/">quotes</a></li> 
+        <li><a href="/">gallery</a></li> 
+        <li><a class="join_" href="/">join <i class="fa-regular fa-user"></i></a></li>
+     </ul>
 </header>
+
+<script>
+    const menu = document.querySelector(".menu_")
+    const menuList = document.querySelector(".mobile_menu")
+    menu.onclick = function(){
+        menuList.classList.toggle("show_menu_list")
+    }
+
+</script>

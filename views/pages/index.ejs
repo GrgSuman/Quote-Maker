@@ -17,8 +17,8 @@
                 <h2>Quote Maker Tool</h2>
                 <p>Try Random Quote <i class="fa-solid fa-shuffle"></i></p>
             </div>
-            <div><textarea autofocus required id="quote" name="quote" cols="30" rows="10" placeholder="Enter Quote"></textarea></div>
-            <div><input  type="text" name="author" id="author" placeholder="Author (optional)"></div>
+            <div><textarea autofocus required id="quote" cols="30" rows="10" placeholder="Enter Quote"></textarea></div>
+            <div><input  type="text" id="author" placeholder="Author (optional)"></div>
             <button>Generate <i class="fa-solid fa-arrows-rotate"></i></button>
         </form>
     </div>
@@ -40,7 +40,6 @@
                Quote maker is easy to use for all kinds of person. You can follow below steps to create your quote with background image after you land to quotemaker.com.
             </p>
             <ul class="how_to">
-                <li></li>
                 <li>Quote maker or quote generator is a online</li>
                 <li>Quote maker or quote generator is a online</li>
                 <li>Quote maker or quote generator is a online</li>
@@ -50,19 +49,16 @@
         </div>
 
         <div class="qna">
-            <h2>Features of Quote Maker?</h2>
+            <h2>Features of Quote Maker</h2>
             <ul>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
+                <li>Eye catching templates</li>
+                <li>Easy to use for everyone</li>
+                <li>Social media sharing options</li>
+                <li>Different fonts and backgrounds</li>
             </ul>
         </div>
 
     </div>
-
 
 <script>
     var quoteData = JSON.parse(window.localStorage.getItem("quoteData"))
@@ -78,10 +74,16 @@
     const author = document.getElementById("author")
     form.addEventListener('submit',(e)=>{
         e.preventDefault()
-        if(quote.value!==""){
-            window.localStorage.setItem("quote",quote.value)
-            window.localStorage.setItem("author",author.value)
-            window.location.href="/quote/quote-maker"
+        if(quote.value){
+            const quoteData = {
+            quote:quote.value,
+            author:author.value
+            }
+            window.localStorage.setItem("quoteData",JSON.stringify(quoteData))
+            window.location.href = "/quote/quote-maker"
+        }
+        else{
+            console.log(456)
         }
     })
 </script>    

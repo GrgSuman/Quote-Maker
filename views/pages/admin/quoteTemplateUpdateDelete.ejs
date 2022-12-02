@@ -32,7 +32,7 @@
             <div class="editor_">
                 <div class="viewer_">
                     <canvas id="canvas" style="display: none ;"></canvas>
-                    <img id="result_" src="http://localhost:8000/public/uploads/<%-template.templateDetails.featuredImage%>" alt="">
+                    <img id="result_" src="/public/uploads/<%-template.templateDetails.featuredImage%>" alt="">
                 </div>
 
                 <form action="" method="" class="form_">
@@ -300,7 +300,7 @@
             formData.append("featuredImage", featuredImage.files[0]);
             formData.append("previousFeaturedImage", "<%-template.templateDetails.featuredImage%>");
             formData.append("imgData",JSON.stringify(details))
-            const res = await fetch("http://localhost:8000/templates/"+'<%-template._id%>',{
+            const res = await fetch("/templates/"+'<%-template._id%>',{
                 method: 'PUT',
                 body:formData
             })
