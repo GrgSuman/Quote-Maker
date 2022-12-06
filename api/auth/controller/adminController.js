@@ -87,5 +87,5 @@ module.exports={
     quoteTemplateUpdateDelete,
     blogs,
     users,
-    emailSubscribers
+    emailSubscribers,
 }

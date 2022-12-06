@@ -12,12 +12,35 @@ const getAllQuoteTemplates = async(req,res)=>{
 }
 
 const getSingleQuoteTemplate = async(req,res)=>{
+    const{id} = req.body
+    const template = await QuoteTemplate.findById({_id:id})
     const data={
-        msg:"single templates of quote"
+        "templateData":template
     }
     res.json(data)
 }
 
+const getSingleQuoteTemplateWithCustomQuote = async(req,res)=>{
+
+    const{quote,author,id} = req.body
+    var template;
+    if(!id){
+        // id="63831f16b46438f84b3890df"
+        const templates = await QuoteTemplate.find().limit(5)
+        template = templates[0]
+
+    }else{
+        template = await QuoteTemplate.findById({_id:id})
+    }
+
+    template.quoteDetails.quote = quote
+    template.authorDetails.author = author
+    const data={
+        "templateData":template
+    }
+    res.json(data)
+
+}
 
 //@desc add the quote template
 //@PUT templates/
@@ -71,5 +94,6 @@ module.exports={
     getSingleQuoteTemplate,
     addQuoteTemplate,
     updateQuoteTemplate,
-    deleteQuoteTemplate
+    deleteQuoteTemplate,
+    getSingleQuoteTemplateWithCustomQuote
 }

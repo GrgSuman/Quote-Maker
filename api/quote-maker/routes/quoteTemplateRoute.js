@@ -4,7 +4,8 @@ const {
     getSingleQuoteTemplate,
     addQuoteTemplate,
     updateQuoteTemplate,
-    deleteQuoteTemplate
+    deleteQuoteTemplate,
+    getSingleQuoteTemplateWithCustomQuote
 } = require("../controller/quoteTemplateController")
 
 
@@ -30,5 +31,7 @@ router.get(`/`,getAllQuoteTemplates)
 router.get(`/:id`,getSingleQuoteTemplate)
       .put(`/:id`,upload,updateQuoteTemplate)
       .delete(`/:id`,deleteQuoteTemplate)
+
+router.post('/customSingleTemplate',getSingleQuoteTemplateWithCustomQuote)
 
 module.exports=router

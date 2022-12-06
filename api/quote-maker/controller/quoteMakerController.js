@@ -1,4 +1,5 @@
 const {canvasImageData} = require("../../../utils/canvasImage")
+const {getFontsList} = require("../../../utils/getFonts")
 const {QuoteTemplate} = require("../model/QuoteTemplate")
 
 
@@ -10,11 +11,8 @@ const singleQuoteMaker = async(req,res)=>{
     const quoteTemplates = await QuoteTemplate.find().limit(10)
 
     const data={
-        "quote":"suman 123 ",
-        "author":"",
-        "showImage":"imgData",
-        "templates":[],
         "templates":quoteTemplates,
+        "fonts": await getFontsList()
     }
     res.render("pages/quoteMaker.ejs",data)
 }
