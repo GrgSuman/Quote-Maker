@@ -187,7 +187,7 @@
                     </div>
 
                     <div class="field flexer" style="margin-top: 2rem;">
-                        <p style="flex: 2;" id="view_"><span>View</span> <i class="fa-regular fa-eye"></i></p>
+                        <!-- <p style="flex: 2;" id="view_"><span>View</span> <i class="fa-regular fa-eye"></i></p> -->
                         <p style="flex: 2; background-color: #a9c42d;" id="update_"><span>Update</span> <i class="fa-regular fa-pen-to-square"></i></p>
                         <p style="flex: 2; background-color: #c23232;" id="delete_"><span>Delete</span> <i class="fa-solid fa-trash"></i></p>
                     </div>
@@ -277,7 +277,7 @@
         });
         })
 
-        const view_ = document.getElementById("view_")
+        // const view_ = document.getElementById("view_")
         const update_ = document.getElementById("update_")
         const delete_ = document.getElementById("delete_")
 
@@ -291,9 +291,9 @@
             deleteTemplateDetails()
         })
 
-        view_.addEventListener("click",()=>{
-            getImageDetails(inputTemplateDetails())
-        })
+        // view_.addEventListener("click",()=>{
+        //     getImageDetails(inputTemplateDetails())
+        // })
 
         const updateTemplateDetails=async(details)=>{
             let formData = new FormData(); 

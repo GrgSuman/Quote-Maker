@@ -184,7 +184,7 @@
                     </div>
 
                     <div class="field flexer" style="margin-top: 2rem;">
-                        <p id="view_"><span>View</span> <i class="fa-regular fa-eye"></i></p>
+                        <!-- <p id="view_"><span>View</span> <i class="fa-regular fa-eye"></i></p> -->
                         <input type="submit" name="submit" value="Create New Template">
                     </div>
                 </form>
@@ -273,7 +273,7 @@
         });
         })
 
-        const view_ = document.getElementById("view_")
+        // const view_ = document.getElementById("view_")
         const form_ = document.querySelector(".form_")
 
         form_.addEventListener('submit',(e)=>{
@@ -284,9 +284,9 @@
 
         
 
-        view_.addEventListener("click",()=>{
-            getImageDetails(inputTemplateDetails())
-        })
+        // view_.addEventListener("click",()=>{
+        //     getImageDetails(inputTemplateDetails())
+        // })
 
         const postTemplateDetails=async(details)=>{
             let formData = new FormData(); 

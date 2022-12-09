@@ -1,7 +1,6 @@
 .outer_{
     margin: 3rem 20%;
 }
-
 .quote_{
     margin: 1rem 0;
 }
@@ -23,6 +22,16 @@
     display: flex;
     justify-content: center;
 }
+.more{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.more img{
+    height: 100px;
+    width: 100px;
+    display: block;
+}
 
 .more img:hover{
     transform: scale(1.01);
@@ -30,7 +39,7 @@
 }
 .show_ img{
     object-fit: contain;
-    width: 70%;
+    width: 60%;
 }
 
 .download_{
@@ -41,6 +50,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 1rem 0;
+    margin-top: 2rem;
     width: 100%;
     padding: 0.6rem;
     font-weight: 500;

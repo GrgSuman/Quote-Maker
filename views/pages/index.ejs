@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote Maker</title>
     <link rel="stylesheet" href="../../public/styles/index.css">
+<link rel="icon" href="/public/images/message.png">
+
 </head>
 <body>
     <%- include('../partials/base.ejs') %>
@@ -35,16 +37,18 @@
         </div>
 
         <div class="qna">
-            <h2>How to use Quote Maker?</h2>
+            <h2>How to make quote background image with Quote Maker?</h2>
             <p>Unlike other tools where you need to edit yourself setting the accurate font size, images color adjustments and all.
                Quote maker is easy to use for all kinds of person. You can follow below steps to create your quote with background image after you land to quotemaker.com.
             </p>
             <ul class="how_to">
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
-                <li>Quote maker or quote generator is a online</li>
+                <li>First go to <a style="color: blue; font-weight: 600;" href="https://quotemaker.frontendmonster.com">Quote Maker</a> website </li>
+                <li>You will see form where you have to enter the <b>Quote</b> and <b>Author(optional)</b> of your choice</li>
+                <li>If you have no idea of quote then you can click <b>Try Random Quote</b> button in top right of form</li>
+                <li>After you enter the quote click <b>Generate</b></li>
+                <li>You will be redirected to another page and you will see different templates</li>
+                <li>Click <b>Download</b> button to download the quote image and click <b>Share</b> button if you want to directly share to social media</li>
+                <li>To change the template click your choice of template below <b>More Templates</b></li>
             </ul>
         </div>
 
@@ -59,6 +63,8 @@
         </div>
 
     </div>
+
+<%- include('../partials/footer.ejs') %>
 
 <script>
     var quoteData = JSON.parse(window.localStorage.getItem("quoteData"))
@@ -81,9 +87,6 @@
             }
             window.localStorage.setItem("quoteData",JSON.stringify(quoteData))
             window.location.href = "/quote/quote-maker"
-        }
-        else{
-            console.log(456)
         }
     })
 </script>    

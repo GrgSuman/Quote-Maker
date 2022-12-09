@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     padding: 3rem 10%;
-    background-color: #f8f8f8;
-    background: url(../images/dragon-scales.png);
+    background-color: aliceblue;
+    /* background: url(../images/dragon-scales.png); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -30,13 +30,13 @@
     margin: 1rem 0;
 }
 .form_ button {
-    background-color: royalblue;
+    background-color: black;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
   }
 .form_ button:active{
-    transform: scale(0.9);
+    transform: scale(0.95);
     transition: 0.3s ease-in-out;
 }
 .top___{
@@ -46,7 +46,7 @@
     margin-bottom: 2rem;
 }
 .top___ p{
-    background-color: #f9ecec;
+    background-color: #e8ff00;
     padding: 0.5rem 2rem;
     border-radius: 5px;
     font-size: 15px;

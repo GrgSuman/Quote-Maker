@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote Maker Template</title>
     <link rel="stylesheet" href="../../public/styles/quoteMaker.css">
+    <link rel="icon" href="/public/images/message.png">
 
 </head>
 
@@ -29,29 +30,14 @@
 
         <div class="more" id="macy-container">
             <% templates.forEach((template)=> { %>
-                <img data-id='<%= template._id %>' class="others_" src="/public/uploads/<%= template.templateDetails.featuredImage %>" alt="">
+                <img  data-id='<%= template._id %>' class="others_" src="/public/uploads/<%= template.templateDetails.featuredImage %>" alt="">
             <% }) %>
-            <!-- <img  class="others_" src="https://images.unsplash.com/photo-1567219934540-9f75f7b87552?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1578909196400-59f8f8156a05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1511465390398-532913e8328d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1592211951067-6c3ce19cca90?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1488381397757-59d6261610f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1503876466-1fc5143eda57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1495001258031-d1b407bc1776?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1527371987029-22c14bc8469f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=505&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1528129550655-5123a0cd0c4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1606607291535-b0adfbf7424f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1549633030-89d0743bad01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1569229569803-69384f5efa83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-            <img  class="others_" src="https://images.unsplash.com/photo-1534196511436-921a4e99f297?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt=""> -->
         </div>
         <button class="download_" id="download_">Load More</button>
     </div>
 
+    <%- include('../partials/footer.ejs') %>
 
-<script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
  <script>
 
 var quoteData = JSON.parse(window.localStorage.getItem("quoteData"))
@@ -67,18 +53,18 @@ document.querySelector(".myquote_").textContent=quoteData.quote
 document.querySelector(".author").textContent=quoteData.author
 
 const getImageDetails=async(imgDetails)=>{
-    startLoading()
+    // startLoading()
     const res = await fetch("/templates/customSingleTemplate",{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body:JSON.stringify(imgDetails)
     })
     const data = await res.json()
-    stopLoading()
     return  data?.templateData
 }
 
 const canvasImageData = (data)=>{
+    startLoading()
 
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext('2d')
@@ -140,6 +126,8 @@ if(data.canvasDetails.useImageForBG){
     wrapText(ctx, text, x, y, maxWidth, lineHeight);
 
     document.getElementById("result_").src = canvas.toDataURL('image/png');
+    stopLoading()
+
 }
 }
 else{
@@ -166,6 +154,8 @@ else{
     wrapText(ctx, text, x, y, maxWidth, lineHeight);
 
     document.getElementById("result_").src = canvas.toDataURL('image/png',1);
+    stopLoading()
+
 }
 }
 
@@ -214,29 +204,18 @@ templateOptions.forEach((x)=>{
        const templateId = x.getAttribute("data-id")
        quoteData['id'] = templateId
        canvasImageData(await getImageDetails(quoteData))
+       document.getElementsByTagName("nav")[0].scrollIntoView()
     })
 })
 
-var macy = Macy({
-        container: '#macy-container',
-        trueOrder: false,
-        waitForImages: false,
-        margin:10,
-        columns: 5,
-        // breakAt: {
-        //     1200: 4,
-        //     940: 1,
-        // }
-    });
+const mainTemplate = document.querySelector(".mainShowcase")
 
-    const mainTemplate = document.querySelector(".mainShowcase")
-
-    mainTemplate.addEventListener("click",()=>{
-            var link = document.createElement('a');
-            link.download = 'quote.png';
-            link.href = mainTemplate.src
-            link.click();
-    })
+mainTemplate.addEventListener("click",()=>{
+        var link = document.createElement('a');
+        link.download = 'quote.png';
+        link.href = mainTemplate.src
+        link.click();
+})
  </script>
 </body>
 </html>
